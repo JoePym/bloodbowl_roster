@@ -66,9 +66,7 @@ class Skill
     if @lctext.match(/\+(\w*)/)
       this.addStat(@lctext.match(/\+(\w*)/)[1]) 
 
-    cost_cell = @player.row.find("td.cost")
-    cost = cost_cell.text().replace("k", "")
-    cost_cell.text((cost*1 + this.skillCost()) + "k" )
+    this.addCost()
 
     label_obj.on "mouseenter", ->
       $(this).find("span.remove-skill").animate(width: "18px")
@@ -80,14 +78,24 @@ class Skill
 
     return label_obj
 
-  removeSelf: ->
-    if @lctext.match(/\+(\w*)/)
-      this.removeStat(@lctext.match(/\+(\w*)/)[1]) 
-    
+  recolor: -> 
+    $(this.label).attr("class", "")
+    $(this.label).addClass("label #{this.displayClass()}")
+
+  addCost: ->
+    cost_cell = @player.row.find("td.cost")
+    cost = cost_cell.text().replace("k", "")
+    cost_cell.text((cost*1 + this.skillCost()) + "k" )
+
+  removeCost: ->
     cost_cell = @player.row.find("td.cost")
     cost = cost_cell.text().replace("k", "")
     cost_cell.text((cost*1 - this.skillCost()) + "k" )
-    
+
+  removeSelf: ->
+    if @lctext.match(/\+(\w*)/)
+      this.removeStat(@lctext.match(/\+(\w*)/)[1]) 
+    this.removeCost()
     @label.remove() 
 
   displayClass: ->

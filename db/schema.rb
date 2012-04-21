@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(:version => 20120421190108) do
     t.integer  "av"
     t.integer  "cost"
     t.boolean  "journeyman_position", :default => false, :null => false
+    t.text     "normal_skills"
+    t.text     "double_skills"
     t.integer  "roster_id"
+    t.integer  "maximum"
     t.text     "default_skills"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

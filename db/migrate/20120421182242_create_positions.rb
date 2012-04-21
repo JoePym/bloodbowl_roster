@@ -8,7 +8,10 @@ class CreatePositions < ActiveRecord::Migration
       t.integer :av
       t.integer :cost
       t.boolean :journeyman_position, :default => false, :null => false
+      t.text :normal_skills
+      t.text :double_skills
       t.integer :roster_id
+      t.integer :maximum
       t.text :default_skills
 
       t.timestamps

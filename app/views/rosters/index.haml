@@ -4,9 +4,9 @@
       %h1 Mootland Giants
 .row-fluid
   .span12
-    %table.table.table-bordered.table-striped
+    %table.table.table-bordered.table-striped.team{:data => {:positions => @roster.positions.to_json}}
       - @players.each_with_index do |player, i|
-        %tr.player{:data => {"normal-accesses" => ["general", "strength", "mutation"], "double-accesses" => ["agility", "passing"]}}
+        %tr.player{:data => {"position" => player.position.to_json}}
           %td{:width => "10"}= i + 1
           %td{:width => "150"}
             .text= player.name
@@ -16,7 +16,7 @@
           %td.st{:width => "10"}= player.position.st
           %td.ag{:width => "10"}= player.position.ag
           %td.av{:width => "10"}= player.position.av
-          %td{:width => "150"}
+          %td.position{:width => "150"}
             .text= player.position.name
             .inputs{:style => "display:none"}
               %select

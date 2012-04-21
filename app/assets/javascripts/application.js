@@ -17,3 +17,4 @@
 
 Skill = $.Skill
 Player = $.Player
+Team = $.Team

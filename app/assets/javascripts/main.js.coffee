@@ -1,10 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
 
 $(document).ready ->
+  team = new Team($("table.roster"))
   $('tr').each (index, playerRow) ->
-    player = new Player(playerRow)
+    player = new Player(team, playerRow)
 
   $('td .text').on "click", ->
     $(this).hide()

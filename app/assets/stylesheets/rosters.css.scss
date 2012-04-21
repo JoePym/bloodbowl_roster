@@ -5,6 +5,9 @@ table{
   td{
     .skill-list{
       display:inline;
+      .defaultSkills{
+        display:inline;
+      }
       span.remove-skill{
         width: 0px;
         overflow:hidden;
