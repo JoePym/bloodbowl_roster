@@ -21,7 +21,7 @@
             .inputs{:style => "display:none"}
               %select
                 - @roster.positions.each do |position|
-                  - attrs = {:data => {:position => position.to_json}}
+                  - attrs = {:data => {:position => position.to_json}, :class => position.name}
                   - attrs[:selected] = "selected" if position == player.position
                   %option{attrs}= position.name
           %td.skills

@@ -1,9 +1,5 @@
-
-
 $(document).ready ->
-  team = new Team($("table.roster"))
-  $('tr').each (index, playerRow) ->
-    player = new Player(team, playerRow)
+  team = new Team($("table.team"))
 
   $('td .text').on "click", ->
     $(this).hide()

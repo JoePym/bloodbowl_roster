@@ -3,22 +3,22 @@ class Player
     @team = team
     @row = $(row)
     this.skillHandlers()
-    @position_info = @row.data("position")
+    @position = @row.data("position")
     @addedSkills = []
     this.positionHandler()
 
   normalSkills: ->
-    [].concat.apply [], $(@position_info.normal_skills).map((index, text) ->
+    [].concat.apply [], $(@position.normal_skills).map((index, text) ->
       Skill[text]()
     )
 
   doubleSkills: ->
-    [].concat.apply [], $(@position_info.double_skills).map((index, text) ->
+    [].concat.apply [], $(@position.double_skills).map((index, text) ->
       Skill[text]()
     )    
 
   removePosition: ->
-    position = @position_info
+    position = @position
     mv = $(@row).find(".mv")
     mv.text(mv.text()*1 - position.mv)
     st = $(@row).find(".st")
@@ -46,7 +46,7 @@ class Player
     cost_cell = @row.find("td.cost")
     cost = cost_cell.text().replace("k", "")
     cost_cell.text((cost*1 + position.cost) + "k" )
-    @position_info = position   
+    @position = position   
     $(position.default_skills).each (index, skill) =>
       @row.find(".defaultSkills").append("<span class='label'>#{skill}</span>")
     $(@addedSkills).each (index, skill) ->
@@ -57,6 +57,7 @@ class Player
     @row.find('td.position select').on "change", =>
       this.removePosition()
       this.addPosition(@row.find('td.position select option:selected').data("position"))
+      @team.setDisabledPositions()
 
   skillHandlers: ->
     skill_cell = @row.find("td.skills")
