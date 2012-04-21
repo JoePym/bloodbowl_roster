@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  rerolls: 1
+  assistant_coaches: 1
+  cheerleaders: 1
+  roster_id: 1
+
+two:
+  name: MyString
+  rerolls: 1
+  assistant_coaches: 1
+  cheerleaders: 1
+  roster_id: 1

@@ -1,0 +1,34 @@
+.row-fluid
+  .span12
+    .page-header
+      %h1 Mootland Giants
+.row-fluid
+  .span12
+    %table.table.table-bordered.table-striped
+      - @players.each_with_index do |player, i|
+        %tr.player{:data => {"normal-accesses" => ["general", "strength", "mutation"], "double-accesses" => ["agility", "passing"]}}
+          %td{:width => "10"}= i + 1
+          %td{:width => "150"}
+            .text= player.name
+            .inputs{:style => "display:none"}
+              = text_field_tag "players[name]"
+          %td.mv{:width => "10"}= player.position.mv
+          %td.st{:width => "10"}= player.position.st
+          %td.ag{:width => "10"}= player.position.ag
+          %td.av{:width => "10"}= player.position.av
+          %td{:width => "150"}
+            .text= player.position.name
+            .inputs{:style => "display:none"}
+              %select
+                - @roster.positions.each do |position|
+                  - attrs = {:data => {:position => position.to_json}}
+                  - attrs[:selected] = "selected" if position == player.position
+                  %option{attrs}= position.name
+          %td.skills
+            .skill-list
+              .defaultSkills
+                - player.position.default_skills.each do |skill|
+                  %span.label.label-default 
+                    = skill
+            %input{:style => "display:none"}
+          %td.cost{:width => "20"}= "#{player.position.cost}k"

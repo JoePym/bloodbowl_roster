@@ -1,0 +1,36 @@
+// Place all the styles related to the rosters controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+table{
+  td{
+    .skill-list{
+      display:inline;
+      span.remove-skill{
+        width: 0px;
+        overflow:hidden;
+        display: inline-block;
+      }
+    }
+    .inputs{
+      select{
+        height: 20px;
+        margin-bottom: 0px;
+        width: 200px;
+      }
+    }
+  }
+  td{
+    input{
+      width: 100px;
+      height: 12px;
+      margin: 0px 0px 0px 5px
+
+    }
+    span.label{
+      margin-left: 10px;
+    }
+    span.label:first-child{
+      margin-left: 0px;
+    }
+  }
+}
