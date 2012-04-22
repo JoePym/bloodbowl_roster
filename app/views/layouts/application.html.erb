@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <%= yield :head %>
+    </div>
+  </div>
   <div class="container-fluid">
     <%= yield %>
   </div>

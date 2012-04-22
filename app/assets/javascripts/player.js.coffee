@@ -5,7 +5,8 @@ class Player
     this.skillHandlers()
     @position = @row.data("position")
     @addedSkills = []
-    this.positionHandler()
+    this.positionHandlers()
+    this.genericHandlers()
 
   normalSkills: ->
     [].concat.apply [], $(@position.normal_skills).map((index, text) ->
@@ -53,11 +54,24 @@ class Player
       skill.addCost()
       skill.recolor()
 
-  positionHandler: ->
+  positionHandlers: ->
     @row.find('td.position select').on "change", =>
       this.removePosition()
       this.addPosition(@row.find('td.position select option:selected').data("position"))
       @team.setDisabledPositions()
+
+  genericHandlers: ->
+    $(@row).find('td .text').on "click", ->
+      $(this).hide()
+      $(this).siblings(".inputs").show()
+      $(this).siblings(".inputs").children().focus()
+    $(@row).find('td .inputs select, input').on "blur", ->
+      $(this).parents(".inputs").hide()
+      $(this).parents(".inputs").siblings(".text").show()
+    $(@row).find('td .inputs select, input').on "change", ->
+      $(this).parents(".inputs").hide()
+      $(this).parents(".inputs").siblings(".text").text($(this).val())
+      $(this).parents(".inputs").siblings(".text").show()
 
   skillHandlers: ->
     skill_cell = @row.find("td.skills")

@@ -1,7 +1,30 @@
 // Place all the styles related to the rosters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-table{
+.navbar{
+  .brand{
+    float: none;
+    text-align: center;
+  }
+}
+.headingRow{
+  margin-top: 40px;
+  padding: 10px;
+  .teamLogo{
+    img{
+      width: 170px;
+    }
+  }
+  table.rerolls{
+    width: 100%;
+    text-align: right;
+  }
+}
+
+table.team{
+  tr{
+    height: 38px;
+  }
   td{
     .skill-list{
       display:inline;
@@ -18,7 +41,7 @@ table{
       select{
         height: 20px;
         margin-bottom: 0px;
-        width: 200px;
+        width: 150px;
       }
     }
   }

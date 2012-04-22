@@ -1,7 +1,56 @@
-.row-fluid
-  .span12
-    .page-header
-      %h1 Mootland Giants
+= content_for :head do
+  .container
+    %a.brand Stuff
+.row-fluid.headingRow
+  .span2
+    .teamLogo= image_tag("chaos_logo.png")
+  .span10
+    %h1 Mootland Giants
+    %table
+      %tr
+        %td{:width => 200}
+          %h4 Coached by:
+        %td 
+          .text Hitonagashi
+          .inputs{:style => "display:none"}
+            = text_field_tag "coach[name]"
+      %tr
+        %td
+          %h4 Team Gold:
+        %td 
+          .text 100k
+          .inputs{:style => "display:none"}
+            = text_field_tag "team[gold]"
+      %tr.teamValue
+        %td
+          %h4 Team Value:
+        %td 1500k
+      %tr
+        %td
+          %h4 Rerolls (60k):
+        %td 
+          .text 1
+          .inputs{:style => "display:none"}
+            = text_field_tag "team[rerolls]"
+        %td{:width => 200}
+          %h4 Cheerleaders:
+        %td 
+          .text 0
+          .inputs{:style => "display:none"}
+            = text_field_tag "team[assistant_coaches]"
+      %tr
+        %td
+          %h4 Assistant Coaches:
+        %td
+          .text 0
+          .inputs{:style => "display:none"}
+            = text_field_tag "team[assistant_coaches]"
+        %td
+          %h4 Fan Factor:
+        %td 
+          .text 5
+          .inputs{:style => "display:none"}
+            = text_field_tag "team[assistant_coaches]"
 .row-fluid
   .span12
     %table.table.table-bordered.table-striped.team{:data => {:positions => @roster.positions.to_json}}
