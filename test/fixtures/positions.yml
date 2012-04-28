@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: 
-  st: 
-  ag: 
-  mv: 
-  av: 
-  cost: 
+  name: "Bob"
+  st: 1
+  ag: 1
+  mv: 1
+  av: 1
+  cost: 1 
   default_skills: MyText
 
 two:
-  name: 
-  st: 
-  ag: 
-  mv: 
-  av: 
-  cost: 
+  name: Steve
+  st: 1
+  ag: 1
+  mv: 1
+  av: 1
+  cost: 1 
   default_skills: MyText

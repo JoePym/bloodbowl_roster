@@ -3,14 +3,30 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 class Team
-  constructor: (table) ->
-    @table = table
-    @positions = $(table).data("positions")
+  constructor: (positions_table, team_details_table, team_name) ->
+    @team_details_table = team_details_table
+    @team_name = team_name
+    @positions_table = positions_table
+    @positions = $(positions_table).data("positions")
     @players = []
-    $(table).find('tr').each (index, playerRow) =>
+    $(positions_table).find('tr').each (index, playerRow) =>
       player = new Player(this, playerRow)
       @players.push(player)
     this.setDisabledPositions()
+    this.detailsHandlers()
+
+  detailsHandlers: ->
+    $(@team_details_table).find('td .text').on "click", ->
+      $(this).hide()
+      $(this).siblings(".inputs").show()
+      $(this).siblings(".inputs").children().focus()
+    $(@team_details_table).find('td .inputs input').on "blur", ->
+      $(this).parents(".inputs").hide()
+      $(this).parents(".inputs").siblings(".text").show()
+    $(@team_details_table).find('td .inputs input').on "change", ->
+      $(this).parents(".inputs").hide()
+      $(this).parents(".inputs").siblings(".text").text($(this).val())
+      $(this).parents(".inputs").siblings(".text").show()
 
   setDisabledPositions: ->
     $(@positions).each (index, position) => 

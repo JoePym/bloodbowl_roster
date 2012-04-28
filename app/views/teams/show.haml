@@ -1,0 +1,83 @@
+.row-fluid.headingRow
+  .span2
+    .teamLogo= image_tag("chaos_logo.png")
+  .span10
+    %h1.teamTitle= @team.name
+    %table.teamDetails
+      %tr
+        %td{:width => 200}
+          %h4 Coached by:
+        %td.clickable
+          .text Hitonagashi
+          .inputs{:style => "display:none"}
+            = text_field_tag "coach[name]"
+      %tr.teamValue
+        %td
+          %h4 Team Value:
+        %td 1500k
+      %tr
+        %td
+          %h4 Team Gold:
+        %td.clickable 
+          .text 100k
+          .inputs.num{:style => "display:none"}
+            = text_field_tag "team[gold]"
+      %tr
+        %td
+          %h4 Rerolls (60k):
+        %td.clickable
+          .text 1
+          .inputs.num{:style => "display:none"}
+            = text_field_tag "team[rerolls]"
+        %td{:width => 200}
+          %h4 Cheerleaders:
+        %td.clickable
+          .text 0
+          .inputs.num{:style => "display:none"}
+            = text_field_tag "team[assistant_coaches]"
+      %tr
+        %td
+          %h4 Assistant Coaches:
+        %td.clickable
+          .text 0
+          .inputs.num{:style => "display:none"}
+            = text_field_tag "team[assistant_coaches]"
+        %td
+          %h4 Fan Factor:
+        %td.clickable
+          .text 5
+          .inputs.num{:style => "display:none"}
+            = text_field_tag "team[assistant_coaches]"
+.row-fluid
+  .span12
+    .div
+
+    %table.table.team{:data => {:positions => @roster.positions.to_json}}
+      - @players.each_with_index do |player, i|
+        %tr.player{:data => {"position" => player.position.to_json}}
+          %td{:width => "10"}= i + 1
+          %td.clickable{:width => "150"}
+            .text= player.name
+            .inputs{:style => "display:none"}
+              = text_field_tag "players[name]"
+          %td.mv{:width => "10"}= player.position.mv
+          %td.st{:width => "10"}= player.position.st
+          %td.ag{:width => "10"}= player.position.ag
+          %td.av{:width => "10"}= player.position.av
+          %td.position.clickable{:width => "150"}
+            .text= player.position.name
+            .inputs{:style => "display:none"}
+              %select
+                - @roster.positions.each do |position|
+                  - attrs = {:data => {:position => position.to_json}, :class => position.name}
+                  - attrs[:selected] = "selected" if position == player.position
+                  %option{attrs}= position.name
+          %td.skills.clickable
+            .skill-list
+              .defaultSkills
+                - player.position.default_skills.each_with_index do |skill, index|
+                  %span.label.label-default
+                    = skill
+            %input{:style => "display:none"}
+            .clear
+          %td.cost{:width => "20"}= "#{player.position.cost}k"

@@ -2,20 +2,10 @@
 
 one:
   name: MyString
-  st: 1
-  ag: 1
-  mv: 1
-  av: 1
-  cost: 1
   position_id: 1
   number: 1
 
 two:
   name: MyString
-  st: 1
-  ag: 1
-  mv: 1
-  av: 1
-  cost: 1
   position_id: 1
   number: 1

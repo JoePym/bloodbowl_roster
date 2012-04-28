@@ -1,8 +1,6 @@
 BloodbowlRoster::Application.routes.draw do
 
-  resources :players
-
-  resources :rosters
+  resources :teams
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -52,7 +50,7 @@ BloodbowlRoster::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'rosters#index'
+  root :to => 'teams#index'
 
   # See how all your routes lay out with "rake routes"
 

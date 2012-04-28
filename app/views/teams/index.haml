@@ -1,0 +1,6 @@
+.teams
+  - @teams.each do |team|
+    .team
+      .name
+        = team.name
+        = link_to "view", team
