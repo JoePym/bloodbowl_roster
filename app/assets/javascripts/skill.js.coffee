@@ -83,11 +83,13 @@ class Skill
     $(this.label).addClass("label #{this.displayClass()}")
 
   addCost: ->
+    @player.team.updateTV(this.skillCost())
     cost_cell = @player.row.find("td.cost")
     cost = cost_cell.text().replace("k", "")
     cost_cell.text((cost*1 + this.skillCost()) + "k" )
 
   removeCost: ->
+    @player.team.updateTV(0 - this.skillCost())
     cost_cell = @player.row.find("td.cost")
     cost = cost_cell.text().replace("k", "")
     cost_cell.text((cost*1 - this.skillCost()) + "k" )

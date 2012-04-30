@@ -31,6 +31,7 @@ class Player
     cost_cell = @row.find("td.cost")
     cost = cost_cell.text().replace("k", "")
     cost_cell.text((cost*1 - position.cost) + "k" )
+    @team.updateTV(0 - position.cost)
     @row.find(".defaultSkills").html("")
     $(@addedSkills).each (index, skill) ->
         skill.removeCost()
@@ -47,9 +48,10 @@ class Player
     cost_cell = @row.find("td.cost")
     cost = cost_cell.text().replace("k", "")
     cost_cell.text((cost*1 + position.cost) + "k" )
+    @team.updateTV(position.cost)
     @position = position   
     $(position.default_skills).each (index, skill) =>
-      @row.find(".defaultSkills").append("<span class='label'>#{skill}</span>")
+      @row.find(".defaultSkills").append("<span class='label label-default'>#{skill}</span>")
     $(@addedSkills).each (index, skill) ->
       skill.addCost()
       skill.recolor()

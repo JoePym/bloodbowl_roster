@@ -1,45 +1,46 @@
 %table
+  %tr.teamValue
+    %td
+      %h4 Team Value:
+    %td.tv= @team.tv.to_s + "k"
   %tr
     %td{:width => 200}
       %h4 Coached by:
     %td.clickable
-      .text Hitonagashi
+      .text Nuffle
       .inputs{:style => "display:none"}
         = text_field_tag "coach[name]"
-  %tr.teamValue
-    %td
-      %h4 Team Value:
-    %td= @team.tv.to_s + "k"
   %tr
     %td
       %h4 Team Gold:
-    %td.clickable 
-      .text= (1000 - @team.tv).to_s + "k"
+    %td.clickable.gold 
+      .text= (1000 - @team.tv).to_s 
       .inputs.num{:style => "display:none"}
         = text_field_tag "team[gold]"
+      k
   %tr
     %td
-      %h4 Rerolls (60k):
-    %td.clickable
+      %h4= "Rerolls (#{@team.roster.reroll_cost.to_i}k):"
+    %td.clickable.rerolls
       .text= @team.rerolls.to_i
-      .inputs.num{:style => "display:none"}
+      .inputs.num{:style => "display:none", :data => {:cost => @team.roster.reroll_cost.to_i, :attribute => "rerolls"}}
         = text_field_tag "team[rerolls]"
     %td{:width => 200}
       %h4 Cheerleaders:
-    %td.clickable
+    %td.clickable.cheerleaders
       .text= @team.cheerleaders.to_i
-      .inputs.num{:style => "display:none"}
-        = text_field_tag "team[assistant_coaches]"
+      .inputs.num{:style => "display:none", :data => {:cost => 10, :attribute => "cheerleaders"}}
+        = text_field_tag "team[cheerleaders]"
   %tr
     %td
       %h4 Assistant Coaches:
-    %td.clickable
+    %td.clickable.assistant_coaches
       .text= @team.assistant_coaches.to_i
-      .inputs.num{:style => "display:none"}
+      .inputs.num{:style => "display:none", :data => {:cost => 10, :attribute => "assistant_coaches"}}
         = text_field_tag "team[assistant_coaches]"
     %td
       %h4 Fan Factor:
-    %td.clickable
+    %td.clickable.fanfactor
       .text 0
-      .inputs.num{:style => "display:none"}
-        = text_field_tag "team[assistant_coaches]"
+      .inputs.num{:style => "display:none", :data => {:cost => 10, :attribute => "fanfactor"}}
+        = text_field_tag "team[fan_factor]"
