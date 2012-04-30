@@ -1,6 +1,10 @@
 // Place all the styles related to the rosters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$light_brown: #ede2c2;
+$normal_brown: #e2d9b2;
+$border_yellow: #E1A60A;
+
 body{
   background-image: url(paper.jpg);
 }
@@ -19,11 +23,41 @@ body{
   }
 }
 .headingRow{
-  margin-top: 50px;
+  margin-top: 60px;
   padding: 10px;
   .teamLogo{
+    float: left;
     img{
-      width: 170px;
+      margin-right: 25px;
+    }
+  }
+  .teamBox{
+    border: 4px solid $border_yellow;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: $normal_brown;
+    overflow: hidden;
+    width: 92%;
+    .teamSlider{
+      width: 99999px;
+    }
+    .team{
+      width: 56px;
+      padding: 3px;
+      float: left;
+      a{
+        color: #372D0F;
+      }
+    }
+    .logo{
+      img{
+        width: 52px;
+      }
+    }
+    .name{
+      width: 54px;
+      text-align: center;
+      font-weight: bold;
     }
   }
   table.teamDetails{
@@ -53,7 +87,7 @@ table{
 table.team{
   border-collapse: separate;
   tr{
-    height: 38px;
+    height: 48px;
   }
   td.clickable.skills{
     text-decoration: none;
@@ -61,10 +95,10 @@ table.team{
   td{
     border-width: 4px;
     border-style: double;
-    border-color: #E1A60A;
+    border-color: $border_yellow;
   }
   tr:nth-child(even) {
-    background-color: #ede2c2;
+    background-color: $light_brown;
   }
 
 
@@ -128,8 +162,8 @@ table.team{
       margin-left: 10px;
     }
     span.label-default{
-      background-color: #E1A60A;
-      text-shadow: 0 -1px 0 #E1A60A;
+      background-color: $border_yellow;
+      text-shadow: 0 -1px 0 $border_yellow;
     }
     span.label:first-child{
       margin-left: 0px;

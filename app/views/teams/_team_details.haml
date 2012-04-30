@@ -1,0 +1,45 @@
+%table.teamDetails
+  %tr
+    %td{:width => 200}
+      %h4 Coached by:
+    %td.clickable
+      .text Hitonagashi
+      .inputs{:style => "display:none"}
+        = text_field_tag "coach[name]"
+  %tr.teamValue
+    %td
+      %h4 Team Value:
+    %td= @team.tv.to_s + "k"
+  %tr
+    %td
+      %h4 Team Gold:
+    %td.clickable 
+      .text= (1000 - @team.tv).to_s + "k"
+      .inputs.num{:style => "display:none"}
+        = text_field_tag "team[gold]"
+  %tr
+    %td
+      %h4 Rerolls (60k):
+    %td.clickable
+      .text= @team.rerolls.to_i
+      .inputs.num{:style => "display:none"}
+        = text_field_tag "team[rerolls]"
+    %td{:width => 200}
+      %h4 Cheerleaders:
+    %td.clickable
+      .text= @team.cheerleaders.to_i
+      .inputs.num{:style => "display:none"}
+        = text_field_tag "team[assistant_coaches]"
+  %tr
+    %td
+      %h4 Assistant Coaches:
+    %td.clickable
+      .text= @team.assistant_coaches.to_i
+      .inputs.num{:style => "display:none"}
+        = text_field_tag "team[assistant_coaches]"
+    %td
+      %h4 Fan Factor:
+    %td.clickable
+      .text 0
+      .inputs.num{:style => "display:none"}
+        = text_field_tag "team[assistant_coaches]"

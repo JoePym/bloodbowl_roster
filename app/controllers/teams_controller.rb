@@ -6,8 +6,4 @@ class TeamsController < ApplicationController
     @roster = @team.roster
   end
 
-  def index
-    @teams = Team.all
-  end
-
 end
