@@ -37,7 +37,23 @@ body{
     padding: 10px;
     background-color: $normal_brown;
     overflow: hidden;
-    width: 92%;
+    width: 414px;
+    margin-left: 13px;
+    .arrow{
+      float: left;
+      margin-top: 30px;
+    }
+    .arrow.left{
+      padding-right: 5px;
+    }
+    .arrow.right{
+      padding-left: 5px;
+    }
+    .sliderContainer{
+      width: 374px;
+      overflow: hidden;
+      float: left;
+    }
     .teamSlider{
       width: 99999px;
     }
@@ -60,7 +76,25 @@ body{
       font-weight: bold;
     }
   }
-  table.teamDetails{
+  .teamDetails{
+    .teamName{
+      h1{
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      input{
+        height: 36px;
+        font-size: 30px;
+        font-weight: bold;
+        width: 300px;
+      }
+    }
+    tr.teamValue td{
+      color: #3052AF;
+      a{
+        color: #3052AF;
+      }
+    }
     input{
       width: 100px;
       height: 12px;

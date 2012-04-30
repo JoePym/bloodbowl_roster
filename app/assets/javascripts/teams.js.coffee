@@ -5,7 +5,7 @@
 class Team
   constructor: (positions_table, team_details_table, team_name) ->
     @team_details_table = team_details_table
-    @team_name = team_name
+    @team_name = $('.teamName')
     @positions_table = positions_table
     @positions = $(positions_table).data("positions")
     @players = []
@@ -13,17 +13,18 @@ class Team
       player = new Player(this, playerRow)
       @players.push(player)
     this.setDisabledPositions()
-    this.detailsHandlers()
+    this.detailsHandlers(@team_details_table)
+    this.detailsHandlers(@team_name)
 
-  detailsHandlers: ->
-    $(@team_details_table).find('td .text').on "click", ->
+  detailsHandlers: (target)->
+    $(target).find('.text').on "click", ->
       $(this).hide()
       $(this).siblings(".inputs").show()
       $(this).siblings(".inputs").children().focus()
-    $(@team_details_table).find('td .inputs input').on "blur", ->
+    $(target).find('.inputs input').on "blur", ->
       $(this).parents(".inputs").hide()
       $(this).parents(".inputs").siblings(".text").show()
-    $(@team_details_table).find('td .inputs input').on "change", ->
+    $(target).find('.inputs input').on "change", ->
       $(this).parents(".inputs").hide()
       $(this).parents(".inputs").siblings(".text").text($(this).val())
       $(this).parents(".inputs").siblings(".text").show()
