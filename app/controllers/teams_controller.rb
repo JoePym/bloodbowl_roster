@@ -6,4 +6,10 @@ class TeamsController < ApplicationController
     @roster = @team.roster
   end
 
+  def index
+    @team = Team.find(3)
+    @players = @team.players
+    @roster = @team.roster
+    render "show"
+  end
 end
