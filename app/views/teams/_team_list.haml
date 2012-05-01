@@ -3,7 +3,7 @@
     = image_tag "left_arrow.png"
   .sliderContainer
     .teamSlider
-      - Roster.all.each do |roster|
+      - Roster.all.sort{|x, y| x.name <=> y.name}.each do |roster|
         .team
           .logo= link_to image_tag("#{roster.logo_path}"), team_path(Team.where(:roster_id => roster).first)
           .name= link_to roster.name, team_path(Team.where(:roster_id => roster).first)
