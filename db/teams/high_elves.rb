@@ -40,7 +40,7 @@ names = [
 team.roster = high_elves
 team.save!
 2.times do |i|
-  team.players.create(:name => names[i], :position => blitzer, :number => i)
+  team.players.create(:name => names[i], :position => blitzer, :number => i+1)
 end
 1.times do |i|
   team.players.create(:name => names[2+i], :position => thrower, :number => 3 + i)
