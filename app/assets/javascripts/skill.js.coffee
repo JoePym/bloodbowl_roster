@@ -40,6 +40,10 @@ class Skill
     Skill.extraordinary().some (skill) =>
       return skill.toLowerCase() == @lctext 
 
+  toJSON: ->
+    type: this.skillType() 
+    name: @text
+
   skillCost: ->
    return 50 if @lctext == "+st" 
    return 40 if @lctext == "+ag"
@@ -100,13 +104,24 @@ class Skill
     this.removeCost()
     @label.remove() 
 
+  skillType: -> 
+    return "default" if this.isExtraordinary()
+    return "normal" if this.isNormal()
+    return "double" if this.isDouble() 
+    return "mv" if @lctext == "+mv"
+    return "av" if @lctext == "+av"
+    return "ag" if @lctext  == "+ag"
+    return "st" if @lctext  == "+st"    
+  
   displayClass: ->
-    return "label" if this.isExtraordinary()
-    return "label-info" if this.isNormal()
-    return "label-success" if this.isDouble() 
-    return "label-inverse" if @lctext == "+mv" or @lctext == "+av"
-    return "label-warning" if @lctext  == "+ag"
-    return "label-important" if @lctext  == "+st"
+    switch this.skillType()
+      when "default" then "label"
+      when "normal"  then "label-info"
+      when "double"  then "label-success"
+      when "mv"      then "label-inverse"
+      when "av"      then "label-inverse"
+      when "ag"      then "label-warning"
+      when "st"      then "label-important"
 
   displayText: ->
     returned_skills = (skill for skill in Skill.all() when skill.toLowerCase() is @lctext)

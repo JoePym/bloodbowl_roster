@@ -40,6 +40,15 @@ class Team
         this[$(input).parents('.inputs').data("attribute")] = $(input).val()
 
 
+  toJSON: ->
+    name:              @team_name.text().trim(),
+    rerolls:           @rerolls,
+    cheerleaders:      @cheerleaders,
+    assistant_coaches: @assistant_coaches,
+    fanfactor:         @fanfactor,
+    tv:                $(@team_details_table).find("td.tv").text().trim(),
+    gold:              $(@team_details_table).find('td.gold .text').text().trim(),
+    players:           @players.map (p) -> p.toJSON()
 
   updateTV: (change) -> 
     tv_box = $(@team_details_table).find("tr.teamValue td.tv")

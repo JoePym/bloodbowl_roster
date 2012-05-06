@@ -18,6 +18,22 @@ class Player
       Skill[text]()
     )    
 
+  skillJson: -> 
+    default_skills = $(@row).find(".defaultSkills .label").map (index, skill) ->
+      type: 'default'
+      name: $(skill).text().trim()
+    @addedSkills.map((s) -> s.toJson()).concat($.makeArray(default_skills))
+
+  toJSON: ->
+    playerNum: $(@row).find(".playerNum").text()*1,
+    name:      $(@row).find(".name .text").text(),
+    mv:        $(@row).find(".mv").text()*1,
+    st:        $(@row).find(".st").text()*1,
+    ag:        $(@row).find(".ag").text()*1,
+    av:        $(@row).find(".av").text()*1,
+    skills:    this.skillJson()
+    cost:      @row.find("td.cost").text()
+
   removePosition: ->
     position = @position
     mv = $(@row).find(".mv")
@@ -94,5 +110,6 @@ class Player
         skill = new Skill(this, $.trim(skill_text), skill_cell.find(".skill-list"))
         this.addedSkills.push skill
       $(input).val("")
+
 
 $.Player = Player

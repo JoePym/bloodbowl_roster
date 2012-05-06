@@ -1,8 +1,8 @@
 %table.table.team{:data => {:positions => @roster.positions.to_json}}
   - @players.each_with_index do |player, i|
     %tr.player{:data => {"position" => player.position.to_json}}
-      %td{:width => "10"}= i + 1
-      %td.clickable{:width => "150"}
+      %td.playerNum{:width => "10"}= i + 1
+      %td.name.clickable{:width => "150"}
         .text= player.name
         .inputs{:style => "display:none"}
           = text_field_tag "players[name]"
