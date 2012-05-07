@@ -74,9 +74,14 @@ class Player
 
   positionHandlers: ->
     @row.find('td.position select').on "change", =>
-      this.removePosition()
-      this.addPosition(@row.find('td.position select option:selected').data("position"))
-      @team.setDisabledPositions()
+      if @row.find('td.position select').val() == "delete"
+        this.removePosition()
+        this.team.players.remove(this)
+        this.row.remove()
+      else
+        this.removePosition()
+        this.addPosition(@row.find('td.position select option:selected').data("position"))
+        @team.setDisabledPositions()
 
   genericHandlers: ->
     $(@row).find('td .text').on "click", ->

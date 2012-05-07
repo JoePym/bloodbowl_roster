@@ -5,11 +5,11 @@ blitzer = high_elves.positions.create(:name => "Blitzer",
   :mv => 7, :st => 3, :ag => 4, :av => 8,
   :default_skills => ["Block"], 
   :normal_skills => ["general", "agility"], :double_skills => ["strength", "passing"],
-  :cost => 100, :journeyman_position => false, :maximum => 4)
+  :cost => 100, :journeyman_position => false, :maximum => 2)
 thrower = high_elves.positions.create(:name => "Thrower",
   :mv => 6, :st => 3, :ag => 4, :av => 8,
   :normal_skills => ["agility", "general", "passing"], :double_skills => ["strength"],
-  :default_skills => ["Pass, Safe Throw"], :maximum => 2,:cost => 90)
+  :default_skills => ["Pass", "Safe Throw"], :maximum => 2,:cost => 90)
 catcher = high_elves.positions.create(:name => "Catcher",
   :mv => 8, :st => 3, :ag => 4, :av => 7, 
   :default_skills => ["Catch"],

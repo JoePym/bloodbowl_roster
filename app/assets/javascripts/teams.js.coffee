@@ -13,12 +13,13 @@ class Team
     @assistant_coaches = @team_details_table.find(".cheerleaders .text").text()
     @fanfactor = @team_details_table.find(".fanfactor .text").text()
     @players = []
-    $(positions_table).find('tr').each (index, playerRow) =>
+    $(positions_table).find('tr.player').each (index, playerRow) =>
       player = new Player(this, playerRow)
       @players.push(player)
     this.setDisabledPositions()
     this.detailsHandlers(@team_details_table)
     this.detailsHandlers(@team_name)
+    this.newPlayerHander()
 
   detailsHandlers: (target)->
     $(target).find('.text').on "click", ->
@@ -39,6 +40,27 @@ class Team
         this.updateTV(new_cost - old_cost)
         this[$(input).parents('.inputs').data("attribute")] = $(input).val()
 
+  newPlayerHander: ->
+    row = $(@positions_table).find('tr.newPlayer')
+    $(row).find('td .text').on "click", ->
+      $(this).hide()
+      $(this).siblings(".inputs").show()
+      $(this).siblings(".inputs").children().focus()
+    $(row).find('td .inputs select, input').on "blur", ->
+      $(this).parents(".inputs").hide()
+      $(this).parents(".inputs").siblings(".text").show()
+    $(@positions_table).find('tr.newPlayer td.position select').on "change", =>
+      row = $(@positions_table).find('tr.newPlayer')
+      unless row.find('td.position select').val() == "cancel"
+        position= row.find('td.position select option:selected').data("position")
+        row.find('td.position select').val("cancel")
+        row.find('td.position select').blur()
+        this.addPlayer(position)
+      else 
+        row.find('td.position select').val("cancel")
+        row.find('td.position select').blur()
+
+
 
   toJSON: ->
     name:              @team_name.text().trim(),
@@ -50,6 +72,24 @@ class Team
     gold:              $(@team_details_table).find('td.gold .text').text().trim(),
     players:           @players.map (p) -> p.toJSON()
 
+  addPlayer: (position) ->
+    new_row = $(@positions_table).find('tr.newPlayer').clone()
+    new_row.data("position", position)
+    new_row.find("td:not(.position, .skills, .name)").text("0")
+    new_row.removeClass("newPlayer")
+    new_row.addClass("player")
+    new_row.find("td.name, td.skills").addClass("clickable")
+    new_row.find("td.name .text").text("Rookie")
+    new_row.find("td.playerNum").text($(@positions_table).find(".player").length + 1)
+    new_row.find("td.position select option:first").remove()
+    new_row.find("td.position .text").text(position.name)
+    new_row.find("td.position select").append("<option value='delete'> Remove this player</option>")
+    new_player = new Player(this, new_row)
+    new_player.addPosition(position)
+    new_row.insertBefore($(@positions_table).find('tr.newPlayer'))
+    @players.push(new_player)
+    this.setDisabledPositions()
+    
   updateTV: (change) -> 
     tv_box = $(@team_details_table).find("tr.teamValue td.tv")
     cost = tv_box.text().replace("k", "")
@@ -61,13 +101,11 @@ class Team
       members = @players.filter (player) -> 
         return player.position.name == position.name
       if members.length >= position.maximum
-        $(@players).each (index, player) ->
-          player.row.find("option").each (index, opt) ->
-            $(opt).attr("disabled", "disabled") if $(opt).text() == position.name
+        $(@positions_table).find("td.position option").each (index, opt) ->
+          $(opt).attr("disabled", "disabled") if $(opt).text() == position.name
       else
-        $(@players).each (index, player) ->
-          player.row.find("option").each (index, opt) ->
-            $(opt).removeAttr("disabled") if $(opt).text() == position.name
+        $(@positions_table).find("td.position option").each (index, opt) ->
+          $(opt).removeAttr("disabled") if $(opt).text() == position.name
     
 $.Team = Team
 

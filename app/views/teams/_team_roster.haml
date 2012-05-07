@@ -18,6 +18,7 @@
               - attrs = {:data => {:position => position.to_json}, :class => position.name}
               - attrs[:selected] = "selected" if position == player.position
               %option{attrs}= position.name
+            %option{:value => "delete"} Remove this player
       %td.skills.clickable
         .skill-list
           .defaultSkills
@@ -26,4 +27,28 @@
                 = skill
         %input{:style => "display:none"}
         .clear
-      %td.cost{:width => "20"}= "#{player.position.cost}k"
+      %td.cost{:width => "20"}= "#{player.position.cost}k"  
+  %tr.newPlayer
+    %td.playerNum 
+    %td.name
+      .text 
+      .inputs{:style => "display:none"}
+        = text_field_tag "players[name]"
+    %td.mv  
+    %td.st 
+    %td.ag 
+    %td.av 
+    %td.position.clickable{:width => "150"}
+      .text Add a player
+      .inputs{:style => "display:none"}
+        %select
+          %option{:value => "cancel"}
+          - @roster.positions.each do |position|
+            - attrs = {:data => {:position => position.to_json}}
+            %option{attrs}= position.name
+    %td.skills 
+      .skill-list
+        .defaultSkills   
+      %input{:style => "display:none"}
+      .clear 
+    %td.cost -
