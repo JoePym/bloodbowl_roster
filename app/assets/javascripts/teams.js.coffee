@@ -56,11 +56,12 @@ class Team
         row.find('td.position select').val("cancel")
         row.find('td.position select').blur()
         this.addPlayer(position)
+        if $(@positions_table).find('tr.player').length >= 16
+          $(@positions_table).find('tr.newPlayer').hide()
+
       else 
         row.find('td.position select').val("cancel")
         row.find('td.position select').blur()
-
-
 
   toJSON: ->
     name:              @team_name.text().trim(),
@@ -89,7 +90,7 @@ class Team
     new_row.insertBefore($(@positions_table).find('tr.newPlayer'))
     @players.push(new_player)
     this.setDisabledPositions()
-    
+
   updateTV: (change) -> 
     tv_box = $(@team_details_table).find("tr.teamValue td.tv")
     cost = tv_box.text().replace("k", "")
