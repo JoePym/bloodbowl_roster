@@ -31,30 +31,42 @@ body{
       margin-right: 25px;
     }
   }
+  .teamList{
+    margin: 0px;
+  }
   .teamBox{
     border: 4px solid $border_yellow;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 0px;
     background-color: $normal_brown;
-    float: right;
     margin-right: 10px;
+    position: relative;
     overflow: hidden;
-    width: 414px;
-    margin-left: 13px;
+    width: 100%;
     .arrow{
       float: left;
       margin-top: 30px;
     }
+    .arrow{
+      position: absolute;
+    }
     .arrow.left{
+      padding-left: 6px;
       padding-right: 5px;
     }
     .arrow.right{
       padding-left: 5px;
+      right:0;
+      top: 10px;
     }
-    .sliderContainer{
-      width: 374px;
+    .sliderOuterContainer{
+      padding: 0px 30px;
       overflow: hidden;
-      float: left;
+      //float: left;
+    }
+    .sliderInnerContainer{
+      width: 100%;
+      overflow: hidden;
     }
     .teamSlider{
       width: 99999px;

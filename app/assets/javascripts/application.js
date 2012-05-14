@@ -18,3 +18,5 @@
 Skill = $.Skill
 Player = $.Player
 Team = $.Team
+TeamSlider = $.TeamSlider
+//this loads the classes into the jQuery object, so they are accessible to each other
