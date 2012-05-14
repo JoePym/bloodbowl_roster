@@ -12,10 +12,10 @@ class TeamSlider
     @container.find('.left.arrow').click =>
       slider_margin = @slider.css("margin-left").replace("px", "")*1
       if slider_margin < 0 && slider_margin >(0- @team_width)
-         @slider.animate
+         @slider.stop().animate
           'margin-left': "0px"       
       else if(slider_margin < 0) 
-        @slider.animate
+        @slider.stop().animate
           'margin-left': "+=#{@team_width}px"
 
     $('.right.arrow').click =>
@@ -24,10 +24,10 @@ class TeamSlider
       team_offset = 0 - (slider_margin/@team_width - container_width/@team_width)
       team_gap = @slider.find(".team").length - team_offset
       if team_gap > 1
-        $('.teamSlider').animate
+        $('.teamSlider').stop().animate
           "margin-left": "-=#{@team_width}px"
       else if team_gap > 0
-        $('.teamSlider').animate
+        $('.teamSlider').stop().animate
           "margin-left": "-=#{@team_width*team_gap}px"      
 
 

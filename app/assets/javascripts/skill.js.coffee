@@ -73,9 +73,9 @@ class Skill
     this.addCost()
 
     label_obj.on "mouseenter", ->
-      $(this).find("span.remove-skill").animate(width: "18px")
+      $(this).find("span.remove-skill").stop().animate(width: "18px")
     label_obj.on "mouseleave", ->
-      $(this).find("span.remove-skill").animate(width: "0px")
+      $(this).find("span.remove-skill").stop().animate(width: "0px")
     label_obj.on "click", ".remove-skill", (e) =>
       this.removeSelf()
       e.stopPropagation()
