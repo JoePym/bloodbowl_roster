@@ -76,8 +76,23 @@ body{
       width: 56px;
       padding: 3px;
       float: left;
+      height: 122px;
       a{
         color: #372D0F;
+      }
+      .logo{
+        margin-left: 2px;
+      }
+    }
+    .team:hover{
+      border-radius: 5px;
+      background: #E1A60A;
+    }
+    .team.selected{
+      border-radius: 5px;
+      background: #372D0F;
+      a{
+        color: white;
       }
     }
     .logo{
