@@ -6,7 +6,7 @@ tree = halflings.positions.create(:name => "Treeman",
   :mv => 2, :st => 6, :ag => 1, :av => 10, 
   :default_skills => [ "Mighty Blow", "Stand Firm", "Strong Arm", "Take Root", "Thick Skull", "Throw Team-Mate" ],
   :normal_skills => ["strength"], :double_skills => ["general", "passing", "agility"],
-  :maximum => 1,:cost => 110)
+  :maximum => 1,:cost => 120)
 halfling = halflings.positions.create(:name => "Halfling",
   :mv => 5, :st => 2, :ag => 3, :av => 6,
   :normal_skills => ["agility"], :double_skills => ["passing", "general", "strength"],
