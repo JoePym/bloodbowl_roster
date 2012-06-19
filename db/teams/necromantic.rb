@@ -1,4 +1,4 @@
-roster = Roster.create(:name => "Necro's", :reroll_cost => 70, :logo_path => "necromantic_logo.png")
+roster = Roster.create(:name => "Necro-mantic", :reroll_cost => 70, :logo_path => "necromantic_logo.png")
 
 puts "adding positionals to Necros"
 wolf = roster.positions.create(:name => "Werewolf",
