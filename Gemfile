@@ -20,7 +20,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'capistrano-deploy', :group => :development, :require => false
 gem 'jquery-rails'
 gem "capistrano"
 # To use ActiveModel has_secure_password
