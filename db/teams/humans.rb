@@ -44,7 +44,7 @@ names = [
 "Wigandus Kant",
 "Wenzel Bahrenfahrer",
 "Adelmann",
-"Sweideger Todbringer"
+"Sweideger"
 ]
 team.roster = humans
 team.save!
