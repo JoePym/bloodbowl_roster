@@ -6,8 +6,25 @@ class TeamSlider
     @team_width = @container.find(".team:first").outerWidth(true)
     @slider_width = @team_width * @slider.find(".team").length
     @slider.width(@slider_width)
+    this.setInitialPosition()
     this.arrowHandlers()
 
+  setInitialPosition: ->
+    container_width = @container.find(".sliderInnerContainer").outerWidth()
+    visible_teams = container_width/@team_width
+    #we are implementing this by taking the number of visible teams, dividing it by 2 to find the leftmost visible team
+    #then moving the slider bar such that it is.
+    selected_index = @teams.indexOf(@container.find('.team.selected')[0])
+    leftmost = selected_index - visible_teams/2
+    rightmost = selected_index + visible_teams/2
+    return if leftmost <= 0
+    if rightmost >= @teams.indexOf(@container.find('.team:last')[0])
+      $('.teamSlider').css
+        "margin-left" : "-#{Math.round(@teams.length - visible_teams )*@team_width}px"
+    else      
+      $('.teamSlider').css
+        "margin-left" : "-#{Math.round(leftmost)*@team_width}px"
+  
   arrowHandlers: -> 
     @container.find('.left.arrow').click =>
       slider_margin = @slider.css("margin-left").replace("px", "")*1
