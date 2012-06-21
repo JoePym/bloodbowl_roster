@@ -20,7 +20,7 @@ class TeamSlider
     return if leftmost <= 0
     if rightmost >= @teams.indexOf(@container.find('.team:last')[0])
       $('.teamSlider').css
-        "margin-left" : "-#{Math.round(@teams.length - visible_teams )*@team_width}px"
+        "margin-left" : "-#{@slider_width - (visible_teams*@team_width)}px"
     else      
       $('.teamSlider').css
         "margin-left" : "-#{Math.round(leftmost)*@team_width}px"
