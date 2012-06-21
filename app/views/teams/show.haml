@@ -4,7 +4,7 @@
     .teamName.clickable
       %h1.text= @team.name
       .inputs{:style => "display:none"}
-        = text_field_tag "coach[name]"
+        = text_field_tag "coach[name]", @team.name
     = render :partial => "team_details"
   .span5.teamList
     = render :partial => "team_list"

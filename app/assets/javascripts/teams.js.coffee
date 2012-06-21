@@ -26,9 +26,22 @@ class Team
       $(this).hide()
       $(this).siblings(".inputs").show()
       $(this).siblings(".inputs").children().focus()
-    $(target).find('.inputs input').on "blur", ->
+    $(target).find('.inputs input, .inputs select').on "blur", ->
       $(this).parents(".inputs").hide()
       $(this).parents(".inputs").siblings(".text").show()
+    $(target).find('.inputs select').on "change", (e) =>
+      input = $(e.delegateTarget)
+      old_status = $(input).parents(".inputs").siblings(".text").text()
+      $(input).parents(".inputs").hide()
+      $(input).parents(".inputs").siblings(".text").text($(input).val())
+      $(input).parents(".inputs").siblings(".text").show()
+      new_status = $(input).val()
+      if old_status != new_status
+        if old_status == "No"
+          this.updateTV(50)
+        else
+          this.updateTV(-50)
+
     $(target).find('.inputs input').on "change", (e) =>
       input = $(e.delegateTarget)
       $(input).parents(".inputs").hide()
@@ -39,6 +52,7 @@ class Team
         new_cost = $(input).parents('.inputs').data("cost")*$(input).val()*1
         this.updateTV(new_cost - old_cost)
         this[$(input).parents('.inputs').data("attribute")] = $(input).val()
+
 
   newPlayerHander: ->
     row = $(@positions_table).find('tr.newPlayer')
