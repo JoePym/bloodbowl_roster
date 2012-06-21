@@ -1,4 +1,4 @@
-roster = Roster.create(:name => "Undead", :reroll_cost => 70, :logo_path => "undead_logo.png")
+roster = Roster.create(:name => "Undead", :reroll_cost => 70, :logo_path => "undead_logo.png", :allow_apo => false)
 
 puts "adding positionals to Undead"
 mummy = roster.positions.create(:name => "Mummy",

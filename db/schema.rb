@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120429202312) do
+ActiveRecord::Schema.define(:version => 20120621164410) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
@@ -43,9 +43,10 @@ ActiveRecord::Schema.define(:version => 20120429202312) do
   create_table "rosters", :force => true do |t|
     t.string   "name"
     t.integer  "reroll_cost"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "logo_path"
+    t.boolean  "allow_apo",   :default => true, :null => false
   end
 
   create_table "teams", :force => true do |t|

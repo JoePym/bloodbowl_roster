@@ -18,12 +18,13 @@
       .inputs.num{:style => "display:none"}
         = text_field_tag "team[gold]"
       k
-    %td 
-      %h4 Apothecary
-    %td.clickable.apothecary
-      .text= @team.apo ? "Yes" : "No"
-      .inputs.select{:style => "display:none"}
-        = select_tag "apothecary", options_for_select([["Yes", "Yes"], ['No', "No"]], @team.apo ? "Yes" : "No")
+    - if @team.roster.allow_apo?
+      %td 
+        %h4 Apothecary
+      %td.clickable.apothecary
+        .text= @team.apo ? "Yes" : "No"
+        .inputs.select{:style => "display:none"}
+          = select_tag "apothecary", options_for_select([["Yes", "Yes"], ['No', "No"]], @team.apo ? "Yes" : "No")
   %tr
     %td
       %h4= "Rerolls (#{@team.roster.reroll_cost.to_i}k):"

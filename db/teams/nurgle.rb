@@ -1,5 +1,5 @@
 puts "creating Nurgle"
-nurgle = Roster.create(:name => "Nurgle", :reroll_cost => 70, :logo_path => "nurgle_logo.png")
+nurgle = Roster.create(:name => "Nurgle", :reroll_cost => 70, :logo_path => "nurgle_logo.png", :allow_apo => false)
 
 puts "adding positionals to Nurgle"
 nw = nurgle.positions.create(:name => "Nurgle Warrior",

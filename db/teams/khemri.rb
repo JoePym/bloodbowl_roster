@@ -1,4 +1,4 @@
-khemri = Roster.create(:name => "Khemri", :reroll_cost => 70, :logo_path => "khemri_logo.png")
+khemri = Roster.create(:name => "Khemri", :reroll_cost => 70, :logo_path => "khemri_logo.png", :allow_apo => false)
 
 puts "adding positionals to High Elves"
 tomb_guardian = khemri.positions.create(:name => "Tomb Guardian",

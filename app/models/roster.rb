@@ -1,5 +1,5 @@
 class Roster < ActiveRecord::Base
-  attr_accessible :name, :reroll_cost, :logo_path
+  attr_accessible :name, :reroll_cost, :logo_path, :allow_apo
 
   has_many :positions
 end
