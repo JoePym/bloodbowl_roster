@@ -32,13 +32,13 @@ class Skill
 
   isNormal: ->
     @player.normalSkills().some (skill) =>
-      return skill.toLowerCase() == @lctext    
+      return this.correctSpelling(skill) == this.correctSpelling(@lctext)    
   isDouble: ->
     @player.doubleSkills().some (skill) =>
-      return skill.toLowerCase() == @lctext 
+      return this.correctSpelling(skill) == this.correctSpelling(@lctext)    
   isExtraordinary: ->
     Skill.extraordinary().some (skill) =>
-      return skill.toLowerCase() == @lctext 
+      return this.correctSpelling(skill) == this.correctSpelling(@lctext) 
 
   toJSON: ->
     type: this.skillType() 
@@ -109,6 +109,7 @@ class Skill
   removeSelf: ->
     if @lctext.match(/\+(\w*)/)
       this.removeStat(@lctext.match(/\+(\w*)/)[1]) 
+    @player.addedSkills.remove(this)
     this.removeCost()
     @label.remove() 
 
@@ -131,8 +132,11 @@ class Skill
       when "ag"      then "label-warning"
       when "st"      then "label-important"
 
+  correctSpelling: (text) ->
+    return text.toLowerCase().replace(" ", "").replace("-", "")
+
   displayText: ->
-    returned_skills = (skill for skill in Skill.all() when skill.toLowerCase() is @lctext)
+    returned_skills = (skill for skill in Skill.all() when this.correctSpelling(skill) is this.correctSpelling(@lctext))
     if returned_skills.length > 0
       returned_skills[0]
     else

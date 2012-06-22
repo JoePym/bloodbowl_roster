@@ -102,8 +102,8 @@ class Player
     skill_cell.find(".skill-list").sortable()
     skill_cell.on "click", ->
       skill_cell.find("input").hide()
-      $(this).children("input").show()
-      $(this).children("input").focus()
+      skill_cell.children("input").show()
+      skill_cell.children("input").focus()
     skill_cell.find('input').on "blur", ->
       $(this).hide()
     skill_cell.find('label').on "click", (e) ->
@@ -113,8 +113,9 @@ class Player
       input = skill_cell.find("input")
       $(input).hide()
       for skill_text in $(input).val().split(",")
-        skill = new Skill(this, $.trim(skill_text), skill_cell.find(".skill-list"))
-        this.addedSkills.push skill
+        if @addedSkills.length < 6
+          skill = new Skill(this, $.trim(skill_text), skill_cell.find(".skill-list"))
+          this.addedSkills.push skill
       $(input).val("")
 
 
