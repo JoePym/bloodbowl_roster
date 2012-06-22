@@ -122,7 +122,7 @@ class Team
         $(@positions_table).find("td.position option").each (index, opt) ->
           $(opt).removeAttr("disabled") if $(opt).text() == position.name
     
-$.Team = Team
+this.Team = Team
 
 
 

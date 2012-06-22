@@ -48,4 +48,4 @@ class TeamSlider
           "margin-left": "-=#{@team_width*team_gap}px"      
 
 
-$.TeamSlider = TeamSlider
+this.TeamSlider = TeamSlider

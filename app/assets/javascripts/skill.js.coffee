@@ -56,11 +56,19 @@ class Skill
   addStat: (stat) ->
     move_cell = @player.row.find("td.#{stat}")
     return unless move_cell.length > 0
+    if move_cell.hasClass("first-stat")
+      move_cell.addClass("second-stat") unless move_cell.hasClass("second-stat")
+    else
+      move_cell.addClass("first-stat")
     move_cell.text(move_cell.text()*1 + 1)
 
   removeStat: (stat) ->
     move_cell = @player.row.find("td.#{stat}")
     return unless move_cell.length > 0
+    if move_cell.hasClass("second-stat")
+      move_cell.removeClass("second-stat")
+    else
+      move_cell.removeClass("first-stat")
     move_cell.text(move_cell.text()*1 - 1)    
 
   addTo: (target) ->
@@ -133,4 +141,4 @@ class Skill
   output: ->
     return "<span class='label #{this.displayClass()}'>#{this.displayText()} <span class=remove-skill> &nbsp; | &times</span></span>"
 
-$.Skill = Skill
+this.Skill = Skill

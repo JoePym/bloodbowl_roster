@@ -14,7 +14,7 @@ blitzer = humans.positions.create(:name => "Blitzer",
 thrower = humans.positions.create(:name => "Thrower",
   :mv => 6, :st => 3, :ag => 3, :av => 8,
   :normal_skills => ["general", "passing"], :double_skills => ["strength", "agility"],
-  :default_skills => ["Pass, Sure Hands"], :maximum => 2,:cost => 90)
+  :default_skills => ["Pass", "Sure Hands"], :maximum => 2,:cost => 90)
 catcher = humans.positions.create(:name => "Catcher",
   :mv => 8, :st => 2, :ag => 3, :av => 7, 
   :default_skills => ["Catch", "Dodge"],

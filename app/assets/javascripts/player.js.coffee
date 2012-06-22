@@ -118,4 +118,4 @@ class Player
       $(input).val("")
 
 
-$.Player = Player
+this.Player = Player
