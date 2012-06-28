@@ -1,14 +1,14 @@
 class TeamsController < ApplicationController
 
   def show
-    @team = Team.find(params[:id])
+    @roster = Roster.find_by_name(params[:id].gsub("_", " "))
+    @team = @roster.teams.first
     @players = @team.players
-    @roster = @team.roster
     @rosters = Roster.all.sort{|x, y| x.name <=> y.name}
   end
 
   def index
-    @team = Team.find(3)
+    @team = Team.all[rand(Team.count)]
     @players = @team.players
     @roster = @team.roster
     @rosters = Roster.all.sort{|x, y| x.name <=> y.name}
