@@ -20,7 +20,7 @@ thrower = roster.positions.create(:name => "Thrower",
   :default_skills => ["Block", "Pass"],
   :normal_skills => ["passing", "general"], :double_skills => ["strength", "agility"],
   :maximum => 2,:cost => 70)
-catcher = roster.positions.create(:name => "Catcher",
+catcher = roster.positions.create(:name => "Runner",
   :mv => 7, :st => 3, :ag => 3, :av => 7, 
   :default_skills => ["Block", "Dauntless"],
   :normal_skills => ["agility", "general"], :double_skills => ["strength", "passing"],
