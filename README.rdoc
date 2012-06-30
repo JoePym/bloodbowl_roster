@@ -5,8 +5,6 @@ in order to play in tabletop tournament play.
 
 It's primarily built in Javascript (jquery + coffeescript), and it allows you to enter your skills and add/remove players.
 
-Currently, there are 15 races implemented, and it's hosted at http://www.calculateyour.tv.
-
-It's designed to be simple, although it hasn't been cross-browser tested yet (developed in Chrome on OSX).
+Currently, there are all 23 races implemented, and it's hosted at http://www.calculateyour.tv.
 
 In terms of modifying the source code, the race information is held in db/seeds, and the javascript is in the usual place of app/assets/javascripts. Any feedback is appreciated!
