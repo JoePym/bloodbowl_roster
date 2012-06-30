@@ -19,7 +19,7 @@ assassin = dark_elves.positions.create(:name => "Assassin",
   :mv => 6, :st => 3, :ag => 4, :av => 7, 
   :default_skills => ["Stab", "Shadowing"],
   :normal_skills => ["general", "agility"], :double_skills => ["strength", "passing"],
-  :maximum => 2,:cost => 70)
+  :maximum => 2,:cost => 90)
 lineelf = dark_elves.positions.create(:name => "Lineman",
   :mv => 6, :st => 3, :ag => 4, :av => 8, 
   :default_skills => [],
