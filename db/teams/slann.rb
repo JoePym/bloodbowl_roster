@@ -18,7 +18,7 @@ catcher = slann.positions.create(:name => "Catcher",
 lineman = slann.positions.create(:name => "Lineman",
   :mv => 6, :st => 3, :ag => 3, :av => 8,
   :normal_skills => ["general"], :double_skills => ["passing", "strength", "agility"],
-  :default_skills => ["Leap", "Very Long Legs" ], :maximum => 16,:cost => 50, :journeyman_position => true)
+  :default_skills => ["Leap", "Very Long Legs" ], :maximum => 16,:cost => 60, :journeyman_position => true)
 
 
 puts "Creating Slann team"
