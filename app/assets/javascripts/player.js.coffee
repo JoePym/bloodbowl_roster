@@ -77,6 +77,7 @@ class Player
       if @row.find('td.position select').val() == "delete"
         this.removePosition()
         this.team.players.remove(this)
+        this.team.setDisabledPositions()
         $(this.team.positions_table).find('tr.newPlayer').show() if $(this.team.players.size < 16)
         this.row.remove()
       else
