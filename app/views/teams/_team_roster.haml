@@ -1,4 +1,4 @@
-%table.table.team{:data => {:positions => @roster.positions.to_json}}
+%table.table.team{:data => {:positions => @roster.positions.to_json, :download_path => download_pdf_teams_path}}
   - @players.each_with_index do |player, i|
     %tr.player{:data => {"position" => player.position.to_json}}
       %td.playerNum{:width => "10"}= i + 1

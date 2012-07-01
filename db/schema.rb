@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621164410) do
+ActiveRecord::Schema.define(:version => 20120701193613) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20120621164410) do
     t.datetime "updated_at",                           :null => false
     t.boolean  "apo",               :default => false, :null => false
     t.integer  "tv"
+    t.integer  "fanfactor"
+    t.integer  "gold"
   end
 
 end

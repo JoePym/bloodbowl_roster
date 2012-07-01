@@ -14,4 +14,13 @@ class TeamsController < ApplicationController
     @rosters = Roster.all.sort{|x, y| x.name <=> y.name}
     render "show"
   end
+
+  def download_pdf
+    players = params[:team].delete(:players)
+    team = Team.new(params[:team])
+    players.each do |index, player|
+      team.players.new(player)
+    end
+    raise team.players.first.st
+  end
 end

@@ -7,6 +7,7 @@ gem 'rails'
 
 gem 'mysql2'
 gem "haml"
+gem 'prawn'
 
 
 # Gems used only for assets and not required

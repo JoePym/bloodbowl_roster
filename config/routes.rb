@@ -1,6 +1,10 @@
 BloodbowlRoster::Application.routes.draw do
 
-  resources :teams
+  resources :teams do 
+    collection do 
+      post :download_pdf
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

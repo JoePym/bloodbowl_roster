@@ -8,9 +8,11 @@ class Team
     @team_name = $('.teamName')
     @positions_table = positions_table
     @positions = $(positions_table).data("positions")
+    @downloadPath = $(positions_table).data("download_path")
     @rerolls = @team_details_table.find(".rerolls .text").text()
     @cheerleaders = @team_details_table.find(".cheerleaders .text").text()
     @assistant_coaches = @team_details_table.find(".cheerleaders .text").text()
+    @apo = @team_details_table.find("#apothecary").val() == "Yes"
     @fanfactor = @team_details_table.find(".fanfactor .text").text()
     @players = []
     $(positions_table).find('tr.player').each (index, playerRow) =>
@@ -36,6 +38,7 @@ class Team
       $(input).parents(".inputs").siblings(".text").text($(input).val())
       $(input).parents(".inputs").siblings(".text").show()
       new_status = $(input).val()
+      @apo = new_status == "Yes"
       if old_status != new_status
         if old_status == "No"
           this.updateTV(50)
@@ -76,6 +79,11 @@ class Team
       else 
         row.find('td.position select').val("cancel")
         row.find('td.position select').blur()
+  
+  postUpdate: ->
+    $.post(@downloadPath, {team: this.toJSON()}, (retData) -> 
+      $("body").append("<iframe src='" + retData.url; + "' style='display: none;' ></iframe>")
+
 
   toJSON: ->
     name:              @team_name.text().trim(),
@@ -83,9 +91,12 @@ class Team
     cheerleaders:      @cheerleaders,
     assistant_coaches: @assistant_coaches,
     fanfactor:         @fanfactor,
+    apo:               @apo,
+    roster_id:         @positions[0].roster_id,
     tv:                $(@team_details_table).find("td.tv").text().trim(),
     gold:              $(@team_details_table).find('td.gold .text').text().trim(),
     players:           @players.map (p) -> p.toJSON()
+
 
   addPlayer: (position) ->
     new_row = $(@positions_table).find('tr.newPlayer').clone()

@@ -31,7 +31,8 @@ class Player
     st:        $(@row).find(".st").text()*1,
     ag:        $(@row).find(".ag").text()*1,
     av:        $(@row).find(".av").text()*1,
-    skills:    this.skillJson()
+    position_id:  @position.id,
+    skills:    this.skillJson(),
     cost:      @row.find("td.cost").text()
 
   removePosition: ->
