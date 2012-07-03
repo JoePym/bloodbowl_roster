@@ -10,11 +10,11 @@
       .navbar-inner
         .container-fluid
           %a.brand= image_tag "logo.png"
-          / %ul.nav.pull-right
-          /   %li
-          /     .btn-group
-          /       %button.btn.btn-primary
-          /         Download
+          %ul.nav.pull-right
+            %li
+              .btn-group
+                %button.btn.btn-primary{:id => "downloadTeam"}
+                  Download
     .container-fluid
       = yield
     :javascript

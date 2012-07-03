@@ -1,3 +1,5 @@
+require 'team_generator'
+
 class TeamsController < ApplicationController
 
   def show
@@ -21,6 +23,6 @@ class TeamsController < ApplicationController
     players.each do |index, player|
       team.players.new(player)
     end
-    raise team.players.first.st
+    send_data TeamGenerator.new(team).render, type: "application/pdf"
   end
 end

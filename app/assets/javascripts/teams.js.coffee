@@ -24,6 +24,8 @@ class Team
     this.newPlayerHander()
 
   detailsHandlers: (target)->
+    $('#downloadTeam').on "click", => 
+      this.postUpdate()
     $(target).find('.text').on "click", ->
       $(this).hide()
       $(this).siblings(".inputs").show()
@@ -81,9 +83,7 @@ class Team
         row.find('td.position select').blur()
   
   postUpdate: ->
-    $.post(@downloadPath, {team: this.toJSON()}, (retData) -> 
-      $("body").append("<iframe src='" + retData.url; + "' style='display: none;' ></iframe>")
-
+    $.download(@downloadPath, {team: this.toJSON()})
 
   toJSON: ->
     name:              @team_name.text().trim(),

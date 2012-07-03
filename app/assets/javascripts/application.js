@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require 'download'
 //= require_tree .
 
 //this loads the classes into the jQuery object, so they are accessible to each other
