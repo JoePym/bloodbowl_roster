@@ -40,9 +40,9 @@ class Skill
     Skill.extraordinary().some (skill) =>
       return this.correctSpelling(skill) == this.correctSpelling(@lctext) 
 
-  toJSON: ->
+  toJson: ->
     type: this.skillType() 
-    name: @text
+    name: this.displayText()
 
   skillCost: ->
    return 50 if @lctext == "+st" 
