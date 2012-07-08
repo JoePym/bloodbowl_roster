@@ -48,7 +48,7 @@ class Skill
    return 50 if @lctext == "+st" 
    return 40 if @lctext == "+ag"
    return 30 if @lctext == "+av"
-   return 30 if @lctext == "+mv"
+   return 30 if @lctext == "+ma"
    return 30 if this.isDouble()
    return 20 if this.isNormal()
    return 30
@@ -117,7 +117,7 @@ class Skill
     return "default" if this.isExtraordinary()
     return "normal" if this.isNormal()
     return "double" if this.isDouble() 
-    return "mv" if @lctext == "+mv"
+    return "ma" if @lctext == "+ma"
     return "av" if @lctext == "+av"
     return "ag" if @lctext  == "+ag"
     return "st" if @lctext  == "+st"    
@@ -127,7 +127,7 @@ class Skill
       when "default" then "label"
       when "normal"  then "label-info"
       when "double"  then "label-success"
-      when "mv"      then "label-inverse"
+      when "ma"      then "label-inverse"
       when "av"      then "label-inverse"
       when "ag"      then "label-warning"
       when "st"      then "label-important"

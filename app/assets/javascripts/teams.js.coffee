@@ -95,8 +95,8 @@ class Team
     roster_id:         @positions[0].roster_id,
     tv:                $(@team_details_table).find("td.tv").text().trim(),
     gold:              $(@team_details_table).find('td.gold .text').text().trim(),
-    players:           @players.map (p) -> p.toJSON()
-
+    players:           (@players.map (p) -> p.toJSON()),
+    coach:             @team_details_table.find(".coach .text").text().trim()
 
   addPlayer: (position) ->
     new_row = $(@positions_table).find('tr.newPlayer').clone()

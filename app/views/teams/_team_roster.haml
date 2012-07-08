@@ -6,7 +6,7 @@
         .text= player.name
         .inputs{:style => "display:none"}
           = text_field_tag "players[name]"
-      %td.mv{:width => "10"}= player.position.mv
+      %td.ma{:width => "10"}= player.position.mv
       %td.st{:width => "10"}= player.position.st
       %td.ag{:width => "10"}= player.position.ag
       %td.av{:width => "10"}= player.position.av
@@ -34,7 +34,7 @@
       .text 
       .inputs{:style => "display:none"}
         = text_field_tag "players[name]"
-    %td.mv  
+    %td.ma  
     %td.st 
     %td.ag 
     %td.av 

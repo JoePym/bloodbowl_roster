@@ -27,7 +27,7 @@ class Player
   toJSON: ->
     playerNum: $(@row).find(".playerNum").text()*1,
     name:      $(@row).find(".name .text").text(),
-    mv:        $(@row).find(".mv").text()*1,
+    ma:        $(@row).find(".ma").text()*1,
     st:        $(@row).find(".st").text()*1,
     ag:        $(@row).find(".ag").text()*1,
     av:        $(@row).find(".av").text()*1,
@@ -37,8 +37,8 @@ class Player
 
   removePosition: ->
     position = @position
-    mv = $(@row).find(".mv")
-    mv.text(mv.text()*1 - position.mv)
+    ma = $(@row).find(".ma")
+    ma.text(ma.text()*1 - position.ma)
     st = $(@row).find(".st")
     st.text(st.text()*1 - position.st)
     ag = $(@row).find(".ag")
@@ -54,8 +54,8 @@ class Player
         skill.removeCost()
 
   addPosition: (position) ->
-    mv = $(@row).find(".mv")
-    mv.text(mv.text()*1 + position.mv)
+    ma = $(@row).find(".ma")
+    ma.text(ma.text()*1 + position.ma)
     st = $(@row).find(".st")
     st.text(st.text()*1 + position.st)
     ag = $(@row).find(".ag")
