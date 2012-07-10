@@ -38,7 +38,7 @@ class Player
   removePosition: ->
     position = @position
     ma = $(@row).find(".ma")
-    ma.text(ma.text()*1 - position.ma)
+    ma.text(ma.text()*1 - position.mv)
     st = $(@row).find(".st")
     st.text(st.text()*1 - position.st)
     ag = $(@row).find(".ag")
@@ -55,7 +55,7 @@ class Player
 
   addPosition: (position) ->
     ma = $(@row).find(".ma")
-    ma.text(ma.text()*1 + position.ma)
+    ma.text(ma.text()*1 + position.mv)
     st = $(@row).find(".st")
     st.text(st.text()*1 + position.st)
     ag = $(@row).find(".ag")
