@@ -27,6 +27,7 @@ gem "capistrano"
 
 group :test, :development do
   gem 'jasmine-rails'
+  gem 'jasmine-spec-extras'
   gem "rspec-rails", "~> 2.0"
 end
 # To use ActiveModel has_secure_password
