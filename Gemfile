@@ -24,6 +24,11 @@ end
 gem 'capistrano-deploy', :group => :development, :require => false
 gem 'jquery-rails'
 gem "capistrano"
+
+group :test, :development do
+  gem 'jasmine-rails'
+  gem "rspec-rails", "~> 2.0"
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
