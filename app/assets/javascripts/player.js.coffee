@@ -9,14 +9,14 @@ class Player
     this.genericHandlers()
 
   normalSkills: ->
-    [].concat.apply [], $(@position.normal_skills).map((index, text) ->
+    [].concat.apply [], $.makeArray($(@position.normal_skills).map((index, text) ->
       Skill[text]()
-    )
+    ))
 
   doubleSkills: ->
-    [].concat.apply [], $(@position.double_skills).map((index, text) ->
+    [].concat.apply [], $.makeArray($(@position.double_skills).map((index, text) ->
       Skill[text]()
-    )    
+    ))
 
   skillJson: -> 
     default_skills = $(@row).find(".defaultSkills .label").map (index, skill) ->

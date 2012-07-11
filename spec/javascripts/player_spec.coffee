@@ -9,6 +9,7 @@ describe "Player",  ->
 
   it 'should be defined', ->
     expect(Player).toBeDefined()
+    expect(Skill).toBeDefined()
 
   it 'should correctly initialize a player', ->
     creator = ->
@@ -33,6 +34,10 @@ describe "Player",  ->
       skills.each (index, skill) =>
         skill_text += $(skill).text().trim() + " "
       expect(skill_text).toEqual("Block Dodge ")
+
+    it "should have strength access and general access on normal skills", ->
+      gas = Skill.general().concat(Skill.strength())
+      expect(@blitzer.normalSkills()).toEqual(gas)
 
   	it "should be able to remove the position",  ->
       @blitzer.removePosition()
@@ -62,8 +67,19 @@ describe "Player",  ->
       new_skill_text = ""
       new_skills.each (index, skill) =>
         new_skill_text += $(skill).text().trim() + " "
-      expect(new_skill_text).toEqual("Dodge ")      
+      expect(new_skill_text).toEqual("Dodge ")   
+      expect(@blitzer.normalSkills()).toEqual(Skill.general())   
 
+    it "should correctly serialise to json", ->
+      json = @blitzer.toJSON()
+      expect(json['ma']).toEqual(6)
+      expect(json['ag']).toEqual(3)
+      expect(json['st']).toEqual(3)
+      expect(json['av']).toEqual(7)
+      expect(json['cost']).toEqual("90k")
+      expect(json["name"]).toEqual("Imjal")
+      expect(json['playerNum']).toEqual(1)
+      expect(json['position_id']).toEqual(43)
 
 
 
