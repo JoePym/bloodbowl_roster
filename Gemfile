@@ -24,6 +24,7 @@ end
 gem 'capistrano-deploy', :group => :development, :require => false
 gem 'jquery-rails'
 gem "capistrano"
+gem 'colorbox-on-rails'
 
 group :test, :development do
   gem 'jasmine-rails'

@@ -45,13 +45,17 @@ class Skill
     name: this.displayText()
 
   skillCost: ->
-   return 50 if @lctext == "+st" 
-   return 40 if @lctext == "+ag"
-   return 30 if @lctext == "+av"
-   return 30 if @lctext == "+ma"
-   return 30 if this.isDouble()
-   return 20 if this.isNormal()
-   return 30
+    return @currentCost
+
+  setSkillCost: ->
+    @currentCost = window.skillCosts[this.skillType()]*1
+    @currentCost = window.skillCosts["forbidden"]*1 if this.skillType() == "default"    
+
+  recost: ->
+    console.log(@currentCost)
+    this.removeCost()
+    this.setSkillCost()
+    this.addCost()
 
   addStat: (stat) ->
     move_cell = @player.row.find("td.#{stat}")
@@ -77,7 +81,7 @@ class Skill
 
     if @lctext.match(/\+(\w*)/)
       this.addStat(@lctext.match(/\+(\w*)/)[1]) 
-
+    this.setSkillCost()
     this.addCost()
 
     label_obj.on "mouseenter", ->
@@ -144,5 +148,4 @@ class Skill
 
   output: ->
     return "<span class='label #{this.displayClass()}'>#{this.displayText()} <span class=remove-skill> &nbsp; | &times</span></span>"
-
 this.Skill = Skill
