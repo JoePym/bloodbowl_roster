@@ -1,5 +1,5 @@
 puts "creating Goblin"
-goblins = Roster.create(:name => "Goblin", :reroll_cost => 70, :logo_path => "goblin_logo.png")
+goblins = Roster.create(:name => "Goblin", :reroll_cost => 60, :logo_path => "goblin_logo.png")
 
 puts "adding positionals to Goblins"
 troll = goblins.positions.create(:name => "Troll",

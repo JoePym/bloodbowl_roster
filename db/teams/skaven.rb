@@ -27,7 +27,7 @@ lineman = skaven.positions.create(:name => "Lineman",
   :maximum => 16,:cost => 50, :journeyman_position => true)
 
 puts "Creating Skaven team"
-team = Team.create(:name => "Underdark Nibblers", :rerolls => 2, :tv => 990, :apo => true)
+team = Team.create(:name => "Underdark Nibblers", :rerolls => 2, :tv => 980, :apo => true)
 names = [
 "Bonesmasher",
 "Bresh",

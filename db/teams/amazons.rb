@@ -1,4 +1,5 @@
-amazons = Roster.create(:name => "Amazons", :reroll_cost => 50, :logo_path => "amazon_logo.png")
+amazons = Roster.find_or_create_by_name("Amazons")
+amazons.update_attributes(:reroll_cost => 50, :logo_path => "amazon_logo.png")
 
 puts "adding positionals to Amazons"
 blitzer = amazons.positions.create(:name => "Blitzer",
