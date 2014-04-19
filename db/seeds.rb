@@ -1,0 +1,1 @@
+Dir["#{Rails.root}/db/teams/*.rb"].each{|s| load s }
